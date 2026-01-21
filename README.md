@@ -1,27 +1,84 @@
-Last updated: January 2026
+[README.md](https://github.com/user-attachments/files/24755801/README.md)
+# VerusIT: Fresh Ink, Not Old Links
 
-Verusit is a Chrome extension that operates entirely on the user’s device.
+**VerusIT** is a Chrome Extension that helps you identify outdated content in Google search results before you click. It injects "Freshness Badges" directly into search results, showing you how old content is at a glance.
 
-Data Collection
-Verusit does not collect, transmit, store, or sell personal data.
-All processing occurs locally within the browser.
+## The Problem
 
-Browsing Activity
-Verusit may analyze the content of the currently active webpage only when the user explicitly activates the extension, for the sole purpose of verifying information during that session.
-No browsing history is recorded, stored, or transmitted.
+Google ranks by popularity, not recency. A tutorial from 2019 might be #1 for your search, but uses deprecated patterns you won't discover until you're 30 minutes in.
 
-Data Storage
-Verusit does not persist user data.
-Any temporary data used during a verification session exists only in memory and is discarded when the session ends.
+VerusIT fixes that.
 
-Third-Party Sharing
-Verusit does not share data with third parties.
-No analytics, tracking, advertising, or telemetry services are used.
+## Features
 
-Permissions
-PChanges
-This policy may be updated if functionality changes. Any updates will be reflected on this page.
+### Freshness Detection (Traffic Light System)
+- **Fresh** - Content less than 6 months old
+- **Aging** - 6 months to 2 years old
+- **Stale** - Over 2 years old
 
-Contact
-For questions, contact:
-📧 jeffsvendsonjr@gmail.comermissions requested by Verusit are limited to what is strictly necessary for its functionality and
+### Tech Debt Detection
+- **Danger** - Critical: mysql_connect, eval(), deprecated React lifecycle
+- **Risk** - Outdated: var, componentWillMount, AngularJS
+- **Info** - Dated but functional: jQuery, CommonJS
+
+### Source Intelligence
+- **Official Docs** - MDN, React.dev, Python docs, etc.
+- **Platform Detection** - GitHub, Stack Overflow, NPM, PyPI
+
+## Privacy
+
+- All processing is local
+- No data transmitted to external servers
+- No analytics or tracking
+
+## Installation
+
+1. Download or clone this repository
+2. Open Chrome - chrome://extensions/
+3. Enable "Developer mode" (top right)
+4. Click "Load unpacked"
+5. Select the VerusIT folder
+
+## Test Searches
+
+| Search | What You'll See |
+|--------|-----------------|
+| react tutorial | Old results flagged for deprecated lifecycle methods |
+| python mysql connect | Flags for insecure PHP 5 patterns |
+| MDN array methods | Official Docs badge |
+| useState react | Modern badge on Hook-based results |
+
+## File Structure
+```
+VerusIT/
+├── manifest.json          # MV3 config
+├── content/
+│   ├── hover.js           # Badge injection & date detection
+│   └── hover.css          # Badge styling
+├── icons/
+│   ├── 16.png
+│   ├── 32.png
+│   ├── 48.png
+│   └── 128.png
+├── README.md
+└── PRIVACY.md
+```
+
+## Permissions
+
+- https://www.google.com/* - Required to inject badges into Google search results
+
+## Changelog
+
+### v1.0.0
+- Freshness badges (green/yellow/red)
+- Tech debt detection (40+ patterns)
+- Official docs highlighting
+- Platform detection
+- IDE-inspired dark theme
+
+---
+
+**4Godsake Enterprises**
+
+*"Fresh ink, not old links."*
