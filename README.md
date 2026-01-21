@@ -1,48 +1,55 @@
-[README.md](https://github.com/user-attachments/files/24760172/README.md)
 # VerusIT: Fresh Ink, Not Old Links
 
-**VerusIT** is a high-performance Chrome Extension that identifies outdated content and technical debt in Google search results before you click. By injecting real-time "Relevance Badges," it helps developers and researchers avoid deprecated patterns and stale documentation.
+**VerusIT** is a privacy-first Chrome Extension that instantly identifies the age and technical relevance of Google search results. By injecting "Freshness Badges" directly into the interface, it helps developers and researchers avoid outdated tutorials, deprecated documentation, and stale news before they click.
+
+![VerusIT Badge Example](icons/128.png)
 
 ## 🚀 Key Features
 
-### 📅 Freshness Detection
-Uses a "Traffic Light" system to categorize results based on publication date:
-* **Fresh (Green)**: Content less than 6 months old.
-* **Aging (Yellow)**: 6 months to 2 years old.
-* **Stale (Red)**: Over 2 years old.
+### 📅 Freshness Detection (Traffic Light System)
+VerusIT analyzes search snippets and metadata to visualize content age:
+- **🟢 Fresh**: Content < 6 months old.
+- **🟡 Aging**: 6 months to 2 years old.
+- **🔴 Stale**: Content > 2 years old.
 
-### 🛠️ Tech Debt & Modernity Scanning
-Scans search snippets for over 40+ technical patterns to identify the underlying stack:
-* **Danger**: High-risk or insecure patterns like `mysql_connect`, `eval()`, or deprecated React lifecycle methods.
-* **Risk**: Outdated patterns like `var`, `componentWillMount`, or AngularJS.
-* **Modern**: Highlights modern standards like React Hooks, ES Modules, and TypeScript.
+### 🛠️ Tech Stack & Debt Scanning
+Automatically flags technical patterns in search results to warn you of legacy code or highlight modern best practices:
+- **⚡ Modern**: Detects modern patterns (e.g., `useState`, `const`, `arrow functions`, `TypeScript`).
+- **⚠️ Legacy/Risk**: Warns about deprecated or insecure patterns (e.g., `mysql_connect`, `var`, `componentWillMount`).
 
-### 🏛️ Source Intelligence
-* **Official Docs**: Automatically flags high-authority domains like MDN, React.dev, and Python docs.
-* **Platform Detection**: Identifies results from GitHub, Stack Overflow, NPM, and PyPI.
+### 🔒 Privacy by Design
+- **Local Processing**: All analysis happens 100% on your device.
+- **Zero Data Collection**: We do not collect, store, or transmit your search queries or browsing history.
+- **No Analytics**: No third-party tracking scripts.
 
-## 🔒 Privacy & Architecture
+## ⚙️ Installation (Developer Mode)
 
-VerusIT is built with a **Privacy-First** philosophy:
-* **Local Processing**: All date extraction and pattern matching run entirely in your browser.
-* **Zero Data Transmission**: No browsing history, search queries, or analytics are ever sent to external servers.
-* **No Persistence**: The extension does not use `chrome.storage` or cookies to track sessions.
+1.  **Download** or clone this repository to your local machine.
+2.  Open Chrome and navigate to `chrome://extensions/`.
+3.  Toggle **"Developer mode"** in the top right corner.
+4.  Click **"Load unpacked"**.
+5.  Select the `VerusIT` folder.
 
-## 🛠️ Installation (Developer Mode)
+## 📝 Permissions Explained
 
-1.  Download or clone this repository.
-2.  Navigate to `chrome://extensions/` in Google Chrome.
-3.  Enable **"Developer mode"** in the top right.
-4.  Click **"Load unpacked"** and select the `VerusIT` folder.
+To function, VerusIT requires the following permission in `manifest.json`:
+
+* `"host_permissions": ["*://www.google.com/*"]`
+
+**Why?** This permission is strictly necessary to:
+1.  Read the DOM of Google Search results pages.
+2.  Inject the visual "badges" next to the result titles.
+
+**Note:** This extension **only** runs on Google Search pages. It does not access or read data from any other websites you visit.
 
 ## 📁 Project Structure
 
 ```text
 VerusIT/
-├── manifest.json      # MV3 Configuration
+├── manifest.json      # MV3 Configuration & Permissions
 ├── content/
-│   ├── hover.js       # Relevance Engine (DOM Analysis)
-│   └── hover.css      # Badge Styling (IDE-inspired)
-├── icons/             # Extension Icons
+│   ├── hover.js       # Core Logic: Date extraction & Badge injection
+│   └── hover.css      # Badge styling
+├── icons/             # Extension assets
 ├── README.md          # Documentation
-└── PRIVACY.md         # Privacy Policy
+└── PRIVACY.md         # Privacy Policy & Contact
