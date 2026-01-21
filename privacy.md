@@ -1,0 +1,1 @@
+"VerusIT does not collect, store, or transmit any user data. All processing, including date detection and technical pattern matching, occurs locally within the user's browser session. No data is ever sent to external servers, APIs, or third-party analytics platforms."
